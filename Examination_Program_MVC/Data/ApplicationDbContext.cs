@@ -18,7 +18,6 @@ public class ApplicationDbContext : DbContext
 	{
 		base.OnModelCreating(modelBuilder);
 
-		// Seed data for courses
 		modelBuilder.Entity<Course>().HasData(
 			new Course
 			{
