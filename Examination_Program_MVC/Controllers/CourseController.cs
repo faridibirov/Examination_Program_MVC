@@ -32,7 +32,8 @@ public class CourseController : Controller
 		{
 			_db.Courses.Add(course);
 			_db.SaveChanges();
-			return RedirectToAction("Index");
+            TempData["success"] = "Course added successfully";
+            return RedirectToAction("Index");
 		}
 		return View(course);
 	}
@@ -60,7 +61,8 @@ public class CourseController : Controller
 		{
 			_db.Courses.Update(obj);
 			_db.SaveChanges();
-			return RedirectToAction("Index");
+            TempData["success"] = "Course edited successfully";
+            return RedirectToAction("Index");
 		}
 		return View();
 	}
@@ -87,7 +89,8 @@ public class CourseController : Controller
 
 			_db.Courses.Remove(obj);
 			_db.SaveChanges();
-			return RedirectToAction("Index");
+        TempData["success"] = "Course deleted successfully";
+        return RedirectToAction("Index");
 	}
 
 }

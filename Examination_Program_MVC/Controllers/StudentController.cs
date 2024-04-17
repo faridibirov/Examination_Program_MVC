@@ -32,6 +32,7 @@ public class StudentController : Controller
 		{
 			_db.Students.Add(student);
 			_db.SaveChanges();
+			TempData["success"] = "Student added successfully" ;
 			return RedirectToAction("Index");
 		}
 		return View(student);
@@ -60,7 +61,8 @@ public class StudentController : Controller
 		{
 			_db.Students.Update(obj);
 			_db.SaveChanges();
-			return RedirectToAction("Index");
+            TempData["success"] = "Student info edited successfully";
+            return RedirectToAction("Index");
 		}
 		return View();
 	}
@@ -87,7 +89,8 @@ public class StudentController : Controller
 
 			_db.Students.Remove(obj);
 			_db.SaveChanges();
-			return RedirectToAction("Index");
+        TempData["success"] = "Student deleted successfully";
+        return RedirectToAction("Index");
 	}
 
 }
