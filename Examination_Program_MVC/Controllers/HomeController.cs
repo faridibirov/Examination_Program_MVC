@@ -151,22 +151,27 @@ public class HomeController : Controller
 		{
 			return NotFound();
 		}
-		var studentFromDb = _db.Students.FirstOrDefault(u => u.Id == id);
 
-		if (studentFromDb == null)
+		var examFromDb = _db.Exams.Include(e => e.Course).Include(e => e.Student)
+			.FirstOrDefault(u => u.Id == id);
+
+		if (examFromDb == null)
 		{
 			return NotFound();
 		}
-		return View(studentFromDb);
+
+		return View(examFromDb);
 	}
 
+
+
 	[HttpPost]
-	public IActionResult Delete(Student obj)
+	public IActionResult Delete(Exam obj)
 	{
 
-		_db.Students.Remove(obj);
+		_db.Exams.Remove(obj);
 		_db.SaveChanges();
-		TempData["success"] = "Student deleted successfully";
+		TempData["success"] = "Exam deleted successfully";
 		return RedirectToAction("Index");
 	}
 }

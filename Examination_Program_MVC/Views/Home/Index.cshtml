@@ -49,7 +49,7 @@
 					<tr>
 						<td>@obj.Course.CourseName</td>
 						<td>@obj.Student.FirstName @obj.Student.LastName</td>
-						<td>@obj.ExamDate.ToShortDateString()</td>
+						<td>@obj.ExamDate.ToString("dd/MM/yyyy HH:mm")</td>
 						<td>@obj.Grade</td>
 						<td>
 							<div class="w-75 btn-group" role="group">
